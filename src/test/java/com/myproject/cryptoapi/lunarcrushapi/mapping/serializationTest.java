@@ -1,6 +1,7 @@
 package com.myproject.cryptoapi.lunarcrushapi.mapping;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.myproject.cryptoapi.lunarcrushapi.domain.asset.Asset;
 import com.myproject.cryptoapi.lunarcrushapi.domain.asset.AssetItem;
 import com.myproject.cryptoapi.lunarcrushapi.domain.asset.AssetItemTImeSeries;
 import net.minidev.json.JSONArray;
@@ -12,8 +13,27 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.List;
 
 public class serializationTest {
+    @Test
+    public void assetAssetSerialization() throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+
+        JSONParser jsonParser = new JSONParser();
+        try{
+            FileReader reader = new FileReader("src/test/Asset.json");
+            Object obj  = jsonParser.parse(reader);
+            JSONObject arr = (JSONObject) obj;
+            Asset asset = mapper.readValue(arr.toString(), Asset.class);
+
+            assert asset.getData() != null;
+            assert asset.getData().size() == 1;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Test
     public void assetAssetItemSerialization() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
@@ -36,9 +56,8 @@ public class serializationTest {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
-
     }
+
     @Test
     public void assetAssetItemTimeSeriesSerialization() throws IOException {
         ObjectMapper mapper = new ObjectMapper();

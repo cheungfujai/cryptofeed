@@ -13,8 +13,9 @@ import java.util.List;
 @Slf4j
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Asset {
 
     @Embedded
-    private List<Asset> data;
+    private List<AssetItem> data;
 }
