@@ -13,7 +13,6 @@ import java.time.LocalDateTime;
 @Slf4j
 @AllArgsConstructor
 public class AssetItem {
-    private LocalDateTime time;
     @JsonProperty("price")
     private double priceCurrent;        // Current price in USD
 

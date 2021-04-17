@@ -8,7 +8,6 @@ public class LunarcrushapiApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(LunarcrushapiApplication.class, args);
-
     }
 
 }
