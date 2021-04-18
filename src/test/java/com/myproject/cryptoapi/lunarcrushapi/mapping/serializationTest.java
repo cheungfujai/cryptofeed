@@ -17,45 +17,37 @@ import java.util.List;
 
 public class serializationTest {
     @Test
-    public void assetAssetSerialization() throws IOException {
+    public void assetAssetSerialization() throws IOException, ParseException {
         ObjectMapper mapper = new ObjectMapper();
 
         JSONParser jsonParser = new JSONParser();
-        try{
-            FileReader reader = new FileReader("src/test/Asset.json");
-            Object obj  = jsonParser.parse(reader);
-            JSONObject arr = (JSONObject) obj;
-            Asset asset = mapper.readValue(arr.toString(), Asset.class);
+        FileReader reader = new FileReader("src/test/Asset.json");
+        Object obj  = jsonParser.parse(reader);
+        JSONObject arr = (JSONObject) obj;
+        Asset asset = mapper.readValue(arr.toString(), Asset.class);
 
-            assert asset.getData() != null;
-            assert asset.getData().size() == 1;
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        assert asset.getData() != null;
+        assert asset.getData().size() == 1;
     }
 
     @Test
-    public void assetAssetItemSerialization() throws IOException {
+    public void assetAssetItemSerialization() throws IOException, ParseException {
         ObjectMapper mapper = new ObjectMapper();
 
         JSONParser jsonParser = new JSONParser();
-        try{
-            FileReader reader = new FileReader("src/test/Asset.json");
-            Object obj  = jsonParser.parse(reader);
-            JSONObject arr = (JSONObject) obj;
-            JSONArray data = (JSONArray) arr.get("data");
+        FileReader reader = new FileReader("src/test/Asset.json");
+        Object obj  = jsonParser.parse(reader);
+        JSONObject arr = (JSONObject) obj;
+        JSONArray data = (JSONArray) arr.get("data");
 
-            AssetItem asset = mapper.readValue(data.get(0).toString(), AssetItem.class);
+        AssetItem asset = mapper.readValue(data.get(0).toString(), AssetItem.class);
 
-            /**
-             *       "symbol": "LTC",
-             *       "name": "Litecoin",
-             */
-            assert asset.getSymbol().equals("LTC");
-            assert asset.getName().equals("Litecoin");
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        /**
+         *       "symbol": "LTC",
+         *       "name": "Litecoin",
+         */
+        assert asset.getSymbol().equals("LTC");
+        assert asset.getName().equals("Litecoin");
     }
 
     @Test
