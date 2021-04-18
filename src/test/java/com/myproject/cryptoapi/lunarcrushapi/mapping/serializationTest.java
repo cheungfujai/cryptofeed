@@ -3,7 +3,7 @@ package com.myproject.cryptoapi.lunarcrushapi.mapping;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.myproject.cryptoapi.lunarcrushapi.domain.asset.Asset;
 import com.myproject.cryptoapi.lunarcrushapi.domain.asset.AssetItem;
-import com.myproject.cryptoapi.lunarcrushapi.domain.asset.AssetItemTImeSeries;
+import com.myproject.cryptoapi.lunarcrushapi.domain.asset.AssetItemTimeSeries;
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 import net.minidev.json.parser.JSONParser;
@@ -54,7 +54,7 @@ public class serializationTest {
         ObjectMapper mapper = new ObjectMapper();
 
         File file = new File("src/test/AssetItemTimeSeries.json");
-        AssetItemTImeSeries asset = mapper.readValue(file, AssetItemTImeSeries.class);
+        AssetItemTimeSeries asset = mapper.readValue(file, AssetItemTimeSeries.class);
         /**
          * "open": 279.606439,
          * "close": 277.652853,

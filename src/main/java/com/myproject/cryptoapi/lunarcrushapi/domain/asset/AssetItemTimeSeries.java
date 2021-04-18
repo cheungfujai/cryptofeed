@@ -16,9 +16,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class AssetItemTImeSeries {
-    @JsonProperty("price")
-    private double priceCurrent;        // Current price in USD
+public class AssetItemTimeSeries {
 
     @JsonProperty("price_btc")
     private double priceBtcCurrent;     // Current price in BTC
@@ -35,17 +33,10 @@ public class AssetItemTImeSeries {
     @JsonProperty("percent_change_24h")
     private double percentChangeHours;  // Percent change in price since 24 hours ago
 
-    @JsonProperty("percent_change_7d")
-    private double percentChangeWeek;   // Percent change in price since 7 days ago
 
-    @JsonProperty("percent_change_30d")
-    private double percentChangeMonth;  // Percent change in price since 30 days ago
-
-    @JsonProperty("volume_24h")
-    private double volumeHours;         // Volume in USD for 24 hours up to this data point
 
     @JsonProperty("volume")
-    private int volumeCurrent;          // Volume for the time period in USD
+    private long volumeCurrent;          // Volume for the time period in USD
     private double volatility;          // degree of variation of a trading price series over time as measured by the standard deviation of logarithmic returns
 
     @JsonProperty("market_cap")
@@ -54,6 +45,4 @@ public class AssetItemTImeSeries {
     @JsonProperty("market_dominance")
     private double marketDominance;
 
-    @JsonProperty("max_supply")
-    private long max_supply;
 }

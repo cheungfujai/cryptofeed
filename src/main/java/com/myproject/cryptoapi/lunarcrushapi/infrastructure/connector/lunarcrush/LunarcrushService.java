@@ -24,7 +24,9 @@ public class LunarcrushService {
                 .toUri();
         RestTemplate restTemplate = new RestTemplate();
         try{
-            return restTemplate.getForObject(targetUrl, Asset.class);
+            Asset asset =  restTemplate.getForObject(targetUrl, Asset.class);
+            System.out.println(restTemplate.getForEntity(targetUrl,String.class));
+            return asset;
         } catch (Exception e){
             throw e;
         }
