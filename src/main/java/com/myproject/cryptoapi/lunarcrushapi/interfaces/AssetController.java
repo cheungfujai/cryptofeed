@@ -25,11 +25,10 @@ public class AssetController {
     }
 
     @GetMapping(value = URL + "/asset/data")
-    public Asset getTodayCryptoData() throws URISyntaxException {
-        URI uri = new URI("https://api.lunarcrush.com/v2?data=assets&key=arayehysw9a0g01t1pj9dkd&symbol=LTC");
-        RestTemplate restTemplate = new RestTemplate();
-
-        return restTemplate.getForObject(uri,Asset.class);
+    public Asset getTodayCryptoData(@RequestParam String data,
+                                    @RequestParam String apiKey,
+                                    @RequestParam String symbol) throws URISyntaxException {
+        return lunarcrushService.getAsset(data, apiKey, symbol);
     }
 
     @GetMapping(value = URL + "/test")
