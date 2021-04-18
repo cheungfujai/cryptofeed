@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.myproject.cryptoapi.lunarcrushapi.domain.asset.Asset;
 import com.myproject.cryptoapi.lunarcrushapi.domain.asset.AssetItem;
 import com.myproject.cryptoapi.lunarcrushapi.domain.asset.AssetItemTimeSeries;
+import com.myproject.cryptoapi.lunarcrushapi.domain.product.Product;
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 import net.minidev.json.parser.JSONParser;
@@ -13,6 +14,9 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class serializationTest {
     @Test
@@ -63,4 +67,12 @@ public class serializationTest {
         assert asset.getClosePrice() == 277.652853;
     }
 
+    @Test
+    public void productSeriesSerialization() throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        byte[] bytes = Files.readAllBytes(Paths.get("src", "test", "product.json"));
+        String s = new String(bytes, Charset.defaultCharset());
+        Product products = mapper.readValue(s, Product.class);
+        System.out.println(products);
+    }
 }
